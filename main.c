@@ -77,18 +77,25 @@ int main()
 		const int heading_size = 76;
 		const char* heading_format = "<w:p><w:pPr><w:pStyle w:val=\"Heading%d\"/></w:pPr><w:r><w:t>%s</w:t></w:r></w:p>";
 		if (prefix("# ", line)) {
-			char* doc_line = malloc((lline+heading_size) * sizeof(char));
-			sprintf(doc_line, heading_format, 1, slice_str(line, 2, lline));
+			const int size = 73;
+			const char* format = "<w:p><w:pPr><w:pStyle w:val=\"Title\"/></w:pPr><w:r><w:t>%s</w:t></w:r></w:p>";
+			char* doc_line = malloc((lline+size) * sizeof(char));
+			sprintf(doc_line, format, slice_str(line, 2, lline));
 			concat_str(&document, doc_line);
 		}
 		else if (prefix("## ", line)) {
 			char* doc_line = malloc((lline+heading_size) * sizeof(char));
-			sprintf(doc_line, heading_format, 2, slice_str(line, 3, lline));
+			sprintf(doc_line, heading_format, 1, slice_str(line, 3, lline));
 			concat_str(&document, doc_line);
 		}
 		else if (prefix("### ", line)) {
 			char* doc_line = malloc((lline+heading_size) * sizeof(char));
-			sprintf(doc_line, heading_format, 3, slice_str(line, 4, lline));
+			sprintf(doc_line, heading_format, 2, slice_str(line, 4, lline));
+			concat_str(&document, doc_line);
+		}
+		else if (prefix("#### ", line)) {
+			char* doc_line = malloc((lline+heading_size) * sizeof(char));
+			sprintf(doc_line, heading_format, 3, slice_str(line, 5, lline));
 			concat_str(&document, doc_line);
 		}
 		else {
