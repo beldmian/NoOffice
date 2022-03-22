@@ -7,8 +7,14 @@ You must provide `document.md` file in root folder of project, then add `format.
 ## Suported markdown operators list
 ```
 # Heading 1
+## Heading 2
+### Heading 3
 Paragraph
 ```
+
+## Dependencies
+
+- unzip utility
 
 ## Next up
 
