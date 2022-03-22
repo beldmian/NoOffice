@@ -92,6 +92,8 @@ int main()
 		}
 	}
 	
+	system("unzip format.docx -d format");
+
 	FILE *out;
 	char *filepath = "./format/word/document.xml";
 	remove(filepath);
